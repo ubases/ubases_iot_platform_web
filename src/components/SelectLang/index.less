@@ -1,0 +1,32 @@
+@import "~ant-design-vue/es/style/themes/default";
+
+@header-menu-prefix-cls: ~"@{ant-prefix}-pro-header-menu";
+@header-drop-down-prefix-cls: ~"@{ant-prefix}-pro-drop-down";
+
+.@{header-menu-prefix-cls} {
+  .anticon {
+    color: #5195f7;
+    margin-right: 8px;
+  }
+  .ant-dropdown-menu-item {
+    color: #5195f7;
+    min-width: 160px;
+  }
+}
+
+.@{header-drop-down-prefix-cls} {
+  color: #5195f7;
+  line-height: @layout-header-height;
+  vertical-align: top;
+  cursor: pointer;
+
+  > i {
+    font-size: 16px !important;
+    transform: none !important;
+
+    svg {
+      position: relative;
+      top: -1px;
+    }
+  }
+}

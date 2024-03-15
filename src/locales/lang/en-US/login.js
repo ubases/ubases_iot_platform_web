@@ -1,0 +1,15 @@
+export default {
+  "login.account": "Account",
+  "login.account_password_login": "Account password login",
+  "login.desc1": "Device data-view at any time",
+  "login.desc2": "Operational news-real-time view",
+  "login.desc3": "Firmware version-easy upgrade",
+  "login.desc4": "Extensions-update at any time",
+  "login.name": "Log in",
+  "login.password": "Password",
+  "login.please input login account": "Please enter your login account",
+  "login.please input login password": "Please enter your password",
+  "login.rememberpassword": "Remember password",
+  "login.submit": "Log in",
+  "login.title": "Aithings IOT Management System",
+};

@@ -1,0 +1,15 @@
+export default {
+  "login.account": "账号",
+  "login.account_password_login": "账号密码登录",
+  "login.desc1": "设备数据-随时查看",
+  "login.desc2": "运营消息-实时查看",
+  "login.desc3": "固件版本-轻松升级",
+  "login.desc4": "扩展程序-随时更新",
+  "login.name": "登录",
+  "login.password": "密码",
+  "login.please input login account": "请输入登录账号",
+  "login.please input login password": "请输入登录密码",
+  "login.rememberpassword": "记住密码",
+  "login.submit": "登录",
+  "login.title": "Aithings IOT 管理系统",
+};
