@@ -93,10 +93,10 @@ export default {
         query: {},
       },
       columns: [
-        { title: "序号", width: "80px", customRender: (item, value, index) => index + 1},
+        { title: "序号", width: "50px", customRender: (item, value, index) => index + 1},
         { dataIndex: "userName", title: "开发者账号", scopedSlots: { customRender: "userName" } },
         { dataIndex: "activeDeviceTotal", title: "已激活设备量" },
-        { dataIndex: "appTotal", title: "已开发APP" },
+        { dataIndex: "appTotal", title: "已开发App" },
         { dataIndex: "online", title: "在线状态", scopedSlots: { customRender: "online" } },
         { dataIndex: "registerTime", title: "注册时间", scopedSlots: { customRender: "registerTime" } },
         { dataIndex: "loginAddr", title: "登录地区" },

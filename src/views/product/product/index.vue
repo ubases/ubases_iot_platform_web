@@ -207,7 +207,7 @@ export default {
       columns: [
         {
           title: "序号",
-          width: "64px",
+          width: "50px",
           customRender: (item, value, index) => index + 1,
         },
         {

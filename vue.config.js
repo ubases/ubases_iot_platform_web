@@ -73,7 +73,7 @@ const vueConfig = {
     port: 8000, // development server port 8000
     proxy: {
       "/api": {
-        target: "http://127.0.0.0/", 
+        target: "http://0.0.0.0:8080", 
         changeOrigin: true,
         ws: true,
         pathRewrite: {

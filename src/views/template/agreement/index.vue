@@ -68,7 +68,7 @@
     </div>
     <div class="table-operator">
       <a-alert
-        message="提示：您可以创建用户政策，隐私协议，关于我们这三个页面。如果需要增加其他页面，请注意检查APP端是否预留了展示入口"
+        message="提示：您可以创建用户政策，隐私协议，关于我们这三个页面。如果需要增加其他页面，请注意检查App端是否预留了展示入口"
         type="warning"
         banner
         closable
@@ -166,7 +166,7 @@ export default {
       columns: [
         {
           title: "序号",
-          width: "80px",
+          width: "50px",
           customRender: (text, record, index) => index + 1,
         },
         {

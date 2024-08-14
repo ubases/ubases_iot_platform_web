@@ -89,7 +89,7 @@
                   fileDir="firmwareDoc"
                   fileIcon="folder"
                   fileHint="固件为bin格式,且不超过10M"
-                  :fileType="['application/x-zip-compressed','application/octet-stream','application/zip','application/x-zip']"
+                  :fileType="[]"
                   :propsAccept="['.bin']"
                   :propsFileName="form.fileName"
                   :propsFileSrc="form.filePath"
@@ -151,8 +151,8 @@
                 {{ record.version }}
               </a-button>
             </template>
-            <template slot="createdAt" slot-scope="text, record">
-              <span>{{ record.createdAt | momentFilter }}</span>
+            <template slot="updatedAt" slot-scope="text, record">
+              <span>{{ record.updatedAt | momentFilter }}</span>
             </template>
             <template slot="fileSize" slot-scope="text, record">
               <span>{{ Number(record.fileSize/1024).toFixed(2) + 'kb' }}</span>
@@ -161,6 +161,10 @@
               <span>{{ $DictName("version_status", record.status) }}</span>
             </template>
             <template v-slot:action="item">
+              <a-button type="link" size="small" @click="handleDownload(item)">
+                下载
+              </a-button>
+              <a-divider type="vertical"/>
               <a-button :disabled="item.status == 1" type="link" size="small" icon="edit" @click="handleEdit(item)">
                 {{ $t("public.edit") }}
               </a-button>
@@ -271,9 +275,9 @@ export default {
           scopedSlots: { customRender: "fileSize" },
         },
         {
-          dataIndex: "createdAt",
+          dataIndex: "updatedAt",
           title: this.$t("firmware.updateTime"),
-          scopedSlots: { customRender: "createdAt" },
+          scopedSlots: { customRender: "updatedAt" },
         },
         {
           dataIndex: "status",
@@ -284,7 +288,7 @@ export default {
           title: this.$t("public.action"),
           key: "action",
           align: "center",
-          width: "180px",
+          width: "280px",
           scopedSlots: { customRender: "action" },
         },
       ],
@@ -469,6 +473,22 @@ export default {
           this.toast(res);
         });
       });
+    },
+
+    handleDownload(item) {
+      if(item.filePath){
+        this.$DownloadFile(
+          item.filePath,
+          item.fileName || "不知名文件"
+        );
+      }
+      if(item.zipFilePath){
+        this.$DownloadFile(
+          item.zipFilePath,
+          item.zipFileName || "不知名文件"
+        );
+      }
+      
     },
   },
 };

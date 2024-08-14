@@ -17,7 +17,8 @@
 
           <!-- 详情不显示密码 -->
           <a-form-model-item v-if="!detailsDisabled" :label="$t('authorityAdm.user.password')" prop="password">
-            <a-input placeholder="建议英文,数字,符号的组合" :disabled="editDisabled" :type="editDisabled ? 'password' : 'text'" v-model="form.password" />
+            <a-input v-if="!editDisabled" placeholder="建议英文,数字,符号的组合" type="text" v-model="form.password" />
+            <a-input v-if="editDisabled" disabled type="password" value="xxxxxxxx" />
             <a-button v-if="editDisabled" @click="resetPassword">
               重置密码
             </a-button>
@@ -225,7 +226,6 @@ export default {
           roleIds: res.data.checkedRoleIds,
           roleNames: res.data.roleList.map((value) => value.roleName).join(","), // 详情回显展示
         };
-        this.form.password = "xxxxxxxx";
       }
       this.formLoading = false;
     },
@@ -234,12 +234,13 @@ export default {
         if (!valid) return;
         this.formLoading = true;
         let res;
-        const md5 = require('md5')
-        const password = md5(this.form.password)
+        
         if (!this.form.userId) {
+          const md5 = require('md5')
+          const password = md5(this.form.password)
           res = await addUser({...this.form, password});
         } else {
-          res = await editUser({...this.form, password});
+          res = await editUser({...this.form});
         }
         this.toast(res);
         this.formLoading = false;
@@ -250,6 +251,7 @@ export default {
           this.editDisabled = false;
           this.title = "系统账号详情";
           this.$route.meta.title = this.title;
+          this.getDetails()
         }
       });
     },
@@ -263,7 +265,8 @@ export default {
       this.$confirm({
         content,
         onOk: () => {
-          setUserStatus({ id: this.id, status }).then((res) => {
+          this.form.status = status
+          editUser(this.form).then((res) => {
             this.toast(res);
             if (res.code === 0) {
               this.$multiTab.closeCurrentPage();

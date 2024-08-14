@@ -93,7 +93,7 @@ export default {
       loading: false,
       dataSource: [{}],
       columns: [
-        { title: "序号", width: "64px", customRender: (text, record, index) => index + 1 },
+        { title: "序号", width: "50px", customRender: (text, record, index) => index + 1 },
         { dataIndex: "type", title: "模板类型", scopedSlots: { customRender: "type" } },
         { dataIndex: "version", title: "版本号" },
         { dataIndex: "openRangeType", title: "开放范围", scopedSlots: { customRender: "openRangeType" } },

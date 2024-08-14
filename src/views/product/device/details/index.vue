@@ -3,7 +3,7 @@
     <a-page-header title="查看设备" @back="$multiTab.closeCurrentPage()">
       <a-spin :spinning="confirmLoading">
         <a-card title="基本信息" :bordered="false">
-          <a-descriptions>
+          <a-descriptions :column="2">
             <a-descriptions-item label="设备名称">
               {{ deviceInfo.deviceName }}
             </a-descriptions-item>
@@ -13,28 +13,30 @@
             <a-descriptions-item label="生产UUID">
               {{ deviceInfo.id }}
             </a-descriptions-item>
-            <a-descriptions-item label="设备序列号">
-              {{ deviceInfo.deviceSN }}
-            </a-descriptions-item>
             <a-descriptions-item label="所属产品">
               {{ deviceInfo.productName }}
             </a-descriptions-item>
-            <a-descriptions-item label="产品model">
-              {{ deviceInfo.productKey }}
+            <a-descriptions-item label="产品ID">
+              {{ deviceInfo.productId }}
             </a-descriptions-item>
-            <a-descriptions-item label="模组固件key">
-              {{ deviceInfo.firmwallKey }}
-            </a-descriptions-item>
-            <a-descriptions-item label="模组固件版本">
-              {{ deviceInfo.firmwallVersion }}
-            </a-descriptions-item>
-            <a-descriptions-item label="MCU固件key">
-              {{ deviceInfo.mcuFirmwallKey }}
-            </a-descriptions-item>
-            <a-descriptions-item label="MCU固件版本">
-              {{ deviceInfo.mcuFirmwallVersion }}
+            <a-descriptions-item label="设备SN码">
+              {{ deviceInfo.deviceSN }}
             </a-descriptions-item>
           </a-descriptions>
+        </a-card>
+                 <!-- 固件版本信息 -->
+        <a-card title="固件版本信息" :bordered="false">
+          <a-table
+            class="version-table"
+            :key="index"
+            size="small"
+            rowKey="id"
+            :data-source="dataSource"
+            :columns="columns"
+            :pagination="false"
+          >
+            <template v-slot:type="item">{{ $DictName('firmware_type', item) }}</template>
+          </a-table>
         </a-card>
         <a-card title="激活信息" :bordered="false">
           <a-descriptions>
@@ -56,7 +58,7 @@
             <a-descriptions-item label="绑定用户">
               {{ activeInfo.activeUser }}
             </a-descriptions-item>
-            <a-descriptions-item label="绑定APP">
+            <a-descriptions-item label="绑定App">
               {{ activeInfo.activeApp }}
             </a-descriptions-item>
             <a-descriptions-item label="地理位置">
@@ -96,6 +98,13 @@ export default {
       activeInfo: {},
       deviceStatus: [],
       confirmLoading: false,
+      columns:[
+        { dataIndex: "name", title: '固件名称'},
+        { dataIndex: "type", title: '固件类型', scopedSlots: { customRender: "type" }},
+        { dataIndex: "key", title: '固件key'},
+        { dataIndex: "version", title: '固件版本' }
+      ],
+      dataSource:[]
     };
   },
   created() {
@@ -111,6 +120,7 @@ export default {
             this.deviceInfo = res.data.deviceInfo || {};
             this.activeInfo = res.data.activeInfo || {};
             this.deviceStatus = res.data.deviceStatus || [];
+            this.dataSource = res.data.firmwareList || []
           }
         })
         .finally(() => {

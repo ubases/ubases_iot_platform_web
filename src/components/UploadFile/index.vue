@@ -17,13 +17,12 @@
       <div class="name">
         <icon-font :type="fileIcon" />
         {{ fileName }}
+        <span class="link-a download" v-if="download" @click="onChangeDownload">下载</span>
       </div>
       <div class="link-a preview" v-if="preview">
         <a :href="propsFileSrc" target="_blank">预览</a>
       </div>
-      <div class="link-a download" v-if="download" @click="onChangeDownload">
-        下载
-      </div>
+      
     </div>
     <a-button
       type="dashed"
@@ -162,11 +161,14 @@ export default {
       }
     },
     fileVerify(file) {
-      console.log(file,file.type)
-      let isType = this.fileType.some((value) => {
-        return value === file.type;
-      });
-      if (!isType) {
+      let isLimitType = false
+      if(this.fileType.length>0 && !this.fileType.some(value =>value === file.type)){
+        isLimitType = true
+      } else if(this.propsAccept.length>0 && !this.propsAccept.some(value=>file.name.includes(value))){
+        isLimitType = true
+      }
+      
+      if (isLimitType) {
         this.$message.warning("请选择" + this.accept + "文件");
         return true;
       }
@@ -178,6 +180,7 @@ export default {
       return false;
     },
     onChangeDownload() {
+      console.log(11111111111111,this.propsFileSrc)
       if (this.propsFileSrc) {
         this.$DownloadFile(
           this.propsFileSrc,
@@ -198,7 +201,7 @@ export default {
     .download {
       display: inline-block;
       text-decoration: underline;
-      margin-right: 10px;
+      margin-left: 10px;
     }
     .name {
       overflow: hidden;

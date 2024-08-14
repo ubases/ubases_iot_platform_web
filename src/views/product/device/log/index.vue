@@ -107,7 +107,7 @@
         </a-table>
       </a-card>
     </a-page-header>
-    <export-log :did="did" ref="exportLog"></export-log>
+    <export-log :did="did" :eventList="eventList" ref="exportLog"></export-log>
   </a-card>
 </template>
 <script>

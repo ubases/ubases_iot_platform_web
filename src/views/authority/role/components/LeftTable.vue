@@ -134,7 +134,7 @@ export default {
       columns: [
         {
           title: "序号",
-          width: "80px",
+          width: "50px",
           customRender: (item, value, index) => index + 1,
         },
         {
@@ -214,7 +214,6 @@ export default {
   methods: {
 
     handleCheck(checkedKeys, e){
-      // console.log(val)
       if(e.checked){
           let parentMenus = this.filterReleMenus(e.node, 1)// 添加父级菜单
           parentMenus = [...checkedKeys.checked, ...parentMenus]

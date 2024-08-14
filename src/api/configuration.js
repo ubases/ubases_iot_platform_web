@@ -64,3 +64,80 @@ export function deleteSystemConfig(data = {}) {
     data,
   });
 }
+
+/**
+ * APP服务列表查询
+ * @param {*} data 
+ * @returns
+ */
+export function appServiceList(data = {}) {
+  return request({
+    url: "/v1/platform/web/system/appService/list",
+    method: "post",
+    data,
+  });
+}
+
+/**
+ * APP服务详细信息查询
+ * @param {*} id id
+ * @returns
+ */
+export function getAppServiceDetails(id) {
+  return request({
+    url: `/v1/platform/web/system/appService/detail/${id}`,
+    method: "get",
+  });
+}
+
+/**
+ * APP服务新增
+ * @param {*} data 
+ * @returns
+ */
+export function addAppService(data = {}) {
+  return request({
+    url: "/v1/platform/web/system/appService/add",
+    method: "post",
+    data,
+  });
+}
+
+/**
+ * APP服务修改
+ * @param {*} data 
+ * @returns
+ */
+export function editAppService(data = {}) {
+  return request({
+    url: "/v1/platform/web/system/appService/edit",
+    method: "post",
+    data,
+  });
+}
+
+/**
+ * APP服务删除
+ * @param {*} data 
+ * @returns
+ */
+export function deleteAppService(data = {}) {
+  return request({
+    url: "/v1/platform/web/system/appService/delete",
+    method: "post",
+    data,
+  });
+}
+
+/**
+ * APP服务启用禁用
+ * @param {*} data 
+ * @returns
+ */
+export function setAppServiceStatus(data = {}) {
+  return request({
+    url: "/v1/platform/web/system/appService/setStatus",
+    method: "post",
+    data,
+  });
+}

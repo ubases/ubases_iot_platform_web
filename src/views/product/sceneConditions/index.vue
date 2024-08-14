@@ -227,7 +227,7 @@ export default {
       columns: [
         {
           title: "序号",
-          width: "80px",
+          width: "50px",
           customRender: (item, value, index) => index + 1,
         },
         {
@@ -294,7 +294,6 @@ export default {
   mounted() {},
   methods: {
     onChangePagination(e) {
-      console.log(e);
     },
     queryList() {},
     handleOk() {

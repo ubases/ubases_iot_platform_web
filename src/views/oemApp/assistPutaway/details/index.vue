@@ -8,9 +8,9 @@
             <div v-if="formDisabled">{{form.developPhone}}</div>
             <a-input v-else placeholder="请输入开发者账号" v-model="form.developPhone" @blur="handlePhone" @change="handlePhoneChange"/>
           </a-form-model-item>
-          <a-form-model-item label="选择APP" prop="appKey">
+          <a-form-model-item label="选择App" prop="appKey">
             <div v-if="formDisabled">{{form.appKey}}</div>
-            <a-select v-else placeholder="请选择APP名称" v-model="form.appKey" :options="appOptions" @change="appChange" />
+            <a-select v-else placeholder="请选择App名称" v-model="form.appKey" :options="appOptions" @change="appChange" />
           </a-form-model-item>
           <a-form-model-item label="IOS包名" prop="appIosPkg">
             <div>{{form.appIosPkg}}</div>
@@ -97,7 +97,7 @@ export default {
   name: "FooterMenuDetails",
   data() {
     return {
-      title: "新上架APP",
+      title: "新上架App",
       form: {
         releaseMarkets:[
           {}
@@ -107,8 +107,8 @@ export default {
       formDisabled: false,
       rules: {
         developPhone: CommonNameRules('请输入开发者账号'),
-        appKey: CommonRules("请选择APP", 'string'),
-        appVersion: CommonRules("请选择APP上架版本", 'string'),
+        appKey: CommonRules("请选择App", 'string'),
+        appVersion: CommonRules("请选择App上架版本", 'string'),
         skinId: CommonRules("请选择上架皮肤"),
         time: CommonRules("请选择有效期", 'array'),
         marketIds: CommonRules("请选择上架市场", 'array'),
@@ -136,9 +136,9 @@ export default {
     moment,
     init() {
       if (this.type === "add") {
-        this.title = "新上架APP";
+        this.title = "新上架App";
       } else if (this.type === "detail") {
-        this.title = "新上架APP";
+        this.title = "新上架App";
         this.formDisabled = true;
       } else if (this.type === "edit") {
         this.title = "编辑信息";
@@ -179,7 +179,6 @@ export default {
         }
       })
       this.skinOptions = this.versionOptions.filter(item=>item.appVersion === res.data.appVersion)?.pop()?.appTemplateSkins || []
-      console.log(this.skinOptions)
       this.releaseMarkets = this.releaseMarkets.map(item=>{
         const data = res.data?.releaseMarkets?.filter(m=>m.marketId == item.value)?.pop() || {}
         return{
@@ -190,7 +189,6 @@ export default {
       })
       const time = [ moment(res.data.startTime * 1000).format('YYYY-MM-DD HH:mm:ss'),moment(res.data.endTime * 1000).format('YYYY-MM-DD HH:mm:ss')]
       const marketIds = res.data?.releaseMarkets?.filter(item=>item.isCheck === 1)?.map(item=>item.marketId)
-      console.log(marketIds)
       this.form = { ...res.data, appIosPkg: data.appIosPkg, appAndroidPkg: data.appAndroidPkg, time, marketIds}
     },
 

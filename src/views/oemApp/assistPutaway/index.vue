@@ -11,7 +11,7 @@
           </a-col>
           <a-col v-bind="aColFlex">
             <a-form-item>
-              <a-input v-model="queryParam.query.appName" placeholder="APP名称" :allowClear="true" @keyup.enter.native="query"/>
+              <a-input v-model="queryParam.query.appName" placeholder="App名称" :allowClear="true" @keyup.enter.native="query"/>
             </a-form-item>
           </a-col>
           <a-col v-bind="aColFlex">
@@ -87,8 +87,8 @@ export default {
       columns: [
         { title: "序号", width: "46px", customRender: (text, record, index) => index + 1},
         { dataIndex: "developPhone", title: "开发者账号" },
-        { dataIndex: "appName", title: "APP名称", scopedSlots: { customRender: "appName" } },
-        { dataIndex: "appVersion", title: "APP版本号" },
+        { dataIndex: "appName", title: "App名称", scopedSlots: { customRender: "appName" } },
+        { dataIndex: "appVersion", title: "App版本号" },
         { dataIndex: "appTemplateVersion", title: "公版模板"},
         { dataIndex: "skinName", title: "选择的皮肤" },
         { dataIndex: "startTime", title: "有效期", scopedSlots: { customRender: "startTime" } },

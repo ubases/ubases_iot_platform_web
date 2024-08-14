@@ -30,26 +30,21 @@
         </a-col>
         <a-col :md="8" :sm="24">
           <a-form-item>
-            <a-select v-model="queryParam.eventType" placeholder="请选择设备事件" style="width: 100%" default-value="">
-              <a-select-option :value="1">数据上报</a-select-option>
-              <a-select-option :value="2">指令下发</a-select-option>
-              <a-select-option :value="3">设备信号量</a-select-option>
-            </a-select>
+            <a-select v-model="queryParam.eventType" placeholder="请选择设备事件" style="width: 100%" default-value="" :options="$DictList('event_type')" />
           </a-form-item>
         </a-col>
         <a-col :md="8" :sm="24">
           <a-form-item>
             <a-select v-model="queryParam.eventKey" placeholder="请选择事件名称" style="width: 100%" default-value="">
+              <a-select-option v-for="v in eventList" :key="v.identifier" :value="v.identifier">
+                  {{ v.name }}
+                </a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :md="8" :sm="24">
           <a-form-item>
-            <a-select v-model="queryParam.origin" placeholder="请选择来源" style="width: 100%" default-value="">
-              <a-select-option :value="1">设备本身</a-select-option>
-              <a-select-option :value="2">其他设备</a-select-option>
-              <a-select-option :value="3">客户端</a-select-option>
-            </a-select>
+            <a-select v-model="queryParam.origin" placeholder="请选择来源" style="width: 100%" default-value="" :options="$DictList('device_mode_type')" />
           </a-form-item>
         </a-col>
         <a-col :md="8" :sm="24">
@@ -80,10 +75,8 @@ import { getDeviceLogCount } from "@/api/product";
 import moment from "moment";
 export default {
   props: {
-    did: {
-      type: String,
-      default: "",
-    },
+    did: { type: String, default: "" },
+    eventList:{ type: Array, default: () => [] }
   },
   data() {
     return {

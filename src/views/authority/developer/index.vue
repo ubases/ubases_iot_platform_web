@@ -103,7 +103,7 @@ export default {
       companyList: [],
       dataSource: [],
       columns: [
-        { title: "序号", width: "80px", customRender: (text, record, index) => index + 1 },
+        { title: "序号", width: "50px", customRender: (text, record, index) => index + 1 },
         { dataIndex: "account", title: "账号", scopedSlots: { customRender: "account" } },
         { dataIndex: "roleName", title: "角色", ellipsis: true },
         { dataIndex: "companyName", title: "所属公司", ellipsis: true },

@@ -60,7 +60,7 @@ export default {
           type: 1,
           img: require("../../../src/assets/image/dashboard1.png"),
           title: "产品分类",
-          remind: "一级和二级分类用于在开放平台展示，二级分类用于在APP展示。",
+          remind: "一级和二级分类用于在开放平台展示，二级分类用于在App展示。",
           name: "Classification",
           path: "/product/classification/index",
         },

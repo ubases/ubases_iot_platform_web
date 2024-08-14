@@ -63,13 +63,13 @@ export default {
       accumulateList: [
         { type: "activeDevice", name: "累计设备激活", total: 0},
         { type: "developer", name: "累计开放平台用户数", total: 0 },
-        { type: "appUser", name: "累计APP用户数量", total: 0 },
+        { type: "appUser", name: "累计App用户数量", total: 0 },
         { type: "deviceFault", name: "累计设备故障", total: 0 },
       ],
       todayList: [
         { type: "activeDevice", name: "今日设备激活", total: 0 },
         { type: "developer", name: "今日开放平台用户数", total: 0 },
-        { type: "appUser", name: "今日APP用户数量", total: 0 },
+        { type: "appUser", name: "今日App用户数量", total: 0 },
         { type: "deviceFault", name: "今日设备故障", total: 0 },
       ],
       accumulateData: {

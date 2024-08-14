@@ -84,7 +84,7 @@ export default {
       },
       // 表格
       columns: [
-        { dataIndex: "key", title: "序号", width: "80px", customRender: (item, value, index) => index + 1 },
+        { dataIndex: "key", title: "序号", width: "50px", customRender: (item, value, index) => index + 1 },
         { dataIndex: "companyName", title: "企业名称", ellipsis: true, scopedSlots: { customRender: "companyName" } },
         { dataIndex: "userName", title: "账号" },
         { dataIndex: "status", title: "认证状态", scopedSlots: { customRender: "status" } },

@@ -20,7 +20,7 @@
             查看设备详细，请跳转到“设备数据”
           </a-button>
         </a-card>
-        <a-card :title="`已开发APP：${developerInfo.appList.length}个`" :bordered="false">
+        <a-card :title="`已开发App：${developerInfo.appList.length}个`" :bordered="false">
           <a-table size="small" rowKey="appId" :data-source="developerInfo.appList" :columns="columnsApp" :pagination="false">
             <template slot="devStatus" slot-scope="text, item">
               {{ $DictName("oem_app_status", item.devStatus) }}
@@ -45,7 +45,7 @@ export default {
       developerInfo: { appList: [] },
       confirmLoading: false,
       columnsApp: [
-        { dataIndex: "appName", title: "APP名称" },
+        { dataIndex: "appName", title: "App名称" },
         { dataIndex: "devStatus", title: "开发状态", scopedSlots: { customRender: "devStatus" } },
         { dataIndex: "version", title: "最新版本号" },
         { dataIndex: "verTotal", title: "历史迭代版本" },

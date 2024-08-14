@@ -4,9 +4,9 @@
     <a-spin :spinning="confirmLoading">
       <a-alert v-if="type === 'copy'" :message="`将复制“${form.originName}”以及其下${count}条问答`" banner/>
       <a-form-model ref="ruleForm" :model="form" :rules="rules">
-        <a-form-model-item :label-col="labelCol" :wrapper-col="wrapperCol" label="APP模板类型" prop="templateType">
+        <a-form-model-item :label-col="labelCol" :wrapper-col="wrapperCol" label="App模板类型" prop="templateType">
           <span v-if="type == 'copy'">{{$DictName('app_template_type',form.templateType)}}</span>
-          <a-select v-if="type !== 'copy'" v-model="form.templateType" placeholder="请选择APP模板类型" @change="typeChange" :options="$DictList('app_template_type')" />
+          <a-select v-if="type !== 'copy'" v-model="form.templateType" placeholder="请选择App模板类型" @change="typeChange" :options="$DictList('app_template_type')" />
         </a-form-model-item>
         <a-form-model-item :label-col="labelCol" :wrapper-col="wrapperCol" label="模板版本号" prop="version">
           <a-select v-model="form.version" placeholder="请选择模板版本号" :options="versionOptions" />
@@ -39,7 +39,7 @@ export default {
       confirmLoading: false,
       form: {},
       rules: {
-        templateType: CommonRules("请选择APP模板类型", 'number'),
+        templateType: CommonRules("请选择App模板类型", 'number'),
         version: CommonRules("请选择模板版本号", 'string'),
         name: CommonNameRules("请输入帮助中心名称"),
       },

@@ -11,7 +11,7 @@
           </a-col>
           <a-col v-bind="aColFlex">
             <a-form-item>
-              <a-input v-model="queryParam.query.appName" placeholder="请输入APP名称" :allowClear="true"  @keyup.enter.native="query" />
+              <a-input v-model="queryParam.query.appName" placeholder="请输入App名称" :allowClear="true"  @keyup.enter.native="query" />
             </a-form-item>
           </a-col>
           <a-col :md="4" :sm="24">
@@ -67,8 +67,8 @@ export default {
         query: {},
       },
       columns: [
-        { title: "序号", width: "80px", customRender: (item, value, index) => index + 1 },
-        { dataIndex: "appName", title: "APP名称", scopedSlots: { customRender: "appName" } },
+        { title: "序号", width: "50px", customRender: (item, value, index) => index + 1 },
+        { dataIndex: "appName", title: "App名称", scopedSlots: { customRender: "appName" } },
         { dataIndex: "developerId", title: "开发者账号" },
         { dataIndex: "registerUserTotal", title: "注册用户" },
         { dataIndex: "acitveUserTotal", title: "近七天活跃用户" },

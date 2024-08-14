@@ -25,6 +25,9 @@
             :propsAccept="['.xls', '.xlsx', '.csv']"
             :propsFileName="form.fileName"
             :fileSize="10"
+            :download="type === 'edit'?true:false"
+            :propsImgSrc="form.filePath"
+            @download="handleDownload"
             @ok="onChangeExcelFile"
           ></upload-file>
         </a-form-model-item>
@@ -121,6 +124,18 @@ export default {
     },
     handleCancel() {
       this.visible = false;
+    },
+    handleDownload(){
+      this.$DownloadTemplate(
+        this,
+        {
+          url: `/v1/platform/web/lang/appResources/download`,
+          method: "get",
+          belongType: this.form.belongType,
+          packageId: this.form.id,
+        },
+        this.form.fileName || "语言包.xlsx"
+      )
     },
     onChangeExcelFile(file) {
       this.$set(this.form,'file', file.file)

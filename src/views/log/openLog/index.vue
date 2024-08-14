@@ -71,7 +71,7 @@ export default {
         queryObj: {},
       },
       columns: [
-        { title: "序号", width: "80px", customRender: (item, value, index) => index + 1 },
+        { title: "序号", width: "50px", customRender: (item, value, index) => index + 1 },
         { dataIndex: "deviceName", title: "开发者账号", scopedSlots: { customRender: "deviceName" } },
         { dataIndex: "activeStatus", title: "部署方式", scopedSlots: { customRender: "activeStatus" } },
         { dataIndex: "onlineStatus", title: "最近访问", scopedSlots: { customRender: "onlineStatus" } },

@@ -291,7 +291,7 @@ export function addDocEntry(data = {}) {
 }
 
 /**
- * APP模板列表查询
+ * App模板列表查询
  * @param {*} data 添加参数
  * @returns
  */
@@ -304,7 +304,7 @@ export function addDocEntry(data = {}) {
 }
 
 /**
- * APP模板复制
+ * App模板复制
  * @param {*} data 添加参数
  * @returns
  */
@@ -317,7 +317,7 @@ export function addDocEntry(data = {}) {
 }
 
 /**
- * APP模板设置状态
+ * App模板设置状态
  * @param {*} data 添加参数
  * @returns
  */
@@ -330,7 +330,7 @@ export function addDocEntry(data = {}) {
 }
 
 /**
- * APP模板删除
+ * App模板删除
  * @param {*} params {id}
  * @returns
  */
@@ -342,7 +342,7 @@ export function addDocEntry(data = {}) {
 }
 
 /**
- * APP模板详细信息查询
+ * App模板详细信息查询
  * @param {*} id id
  * @returns
  */
@@ -367,7 +367,7 @@ export function addDocEntry(data = {}) {
 }
 
 /**
- * APP模板新增
+ * App模板新增
  * @param {*} data 添加参数
  * @returns
  */
@@ -380,7 +380,7 @@ export function addDocEntry(data = {}) {
 }
 
 /**
- * APP模板修改
+ * App模板修改
  * @param {*} data 添加参数
  * @returns
  */
@@ -533,7 +533,7 @@ export function addDocEntry(data = {}) {
 }
 
 /**
- * 开发者APP信息
+ * 开发者App信息
  * @param {*} params 添加参数
  * @returns
  */

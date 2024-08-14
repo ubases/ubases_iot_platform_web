@@ -19,11 +19,13 @@ export function uploadFile(data) {
 
 // 文件下载
 export function downloadTemplate(params) {
+  const {url,method,timeout, ...param} = {...params}
   return request({
-    url: params.url,
-    method: params.method || "get",
-    params,
-    data: params,
+    url: url,
+    method: method || "get",
+    params:param || {},
+    data: param || {},
+    timeout:timeout || 60*1000,
     responseType: "blob", // 返回格式，默认json，可选arraybuffer、blob、document、json、text、stream
   });
 }

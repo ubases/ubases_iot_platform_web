@@ -113,7 +113,7 @@ export default {
       },
       queryParam: {},
       columns: [
-        { title: "序号", width: "80px", customRender: (item, value, index) => index + 1 },
+        { title: "序号", width: "50px", customRender: (item, value, index) => index + 1 },
         { dataIndex: "title", title: "问题标题", width: "180px", scopedSlots: { customRender: "titleRow" } },
         { dataIndex: "dirName", title: "目录" },
         { dataIndex: "isEnable", title: "状态", scopedSlots: { customRender: "isEnable" } },

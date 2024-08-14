@@ -23,8 +23,7 @@ const errorHandler = (error) => {
   ) {
     let reader = new FileReader();
     reader.onload = (e) => {
-      let errData = JSON.parse(e.target.result);
-      console.log(errData.message);
+      // let errData = JSON.parse(e.target.result);
     };
     reader.readAsText(error.response.data);
   }

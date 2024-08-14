@@ -6,12 +6,12 @@
         <a-row :gutter="48">
           <a-col v-bind="aColFlex">
             <a-form-item>
-              <a-input v-model="queryParam.query.account" placeholder="请输入APP用户账号" :allowClear="true"  @keyup.enter.native="query"/>
+              <a-input v-model="queryParam.query.account" placeholder="请输入App用户账号" :allowClear="true"  @keyup.enter.native="query"/>
             </a-form-item>
           </a-col>
           <a-col v-bind="aColFlex">
             <a-form-item>
-              <a-input v-model="queryParam.query.appName" placeholder="请输入APP名称" :allowClear="true"  @keyup.enter.native="query"/>
+              <a-input v-model="queryParam.query.appName" placeholder="请输入App名称" :allowClear="true"  @keyup.enter.native="query"/>
             </a-form-item>
           </a-col>
           <a-col v-bind="aColFlex">
@@ -74,9 +74,9 @@ export default {
         query: {},
       },
       columns: [
-        { title: "序号", width: "80px", customRender: (item, value, index) => index + 1 },
+        { title: "序号", width: "50px", customRender: (item, value, index) => index + 1 },
         { dataIndex: "account", title: "用户账号", scopedSlots: { customRender: "account" } },
-        { dataIndex: "appName", title: "APP名称" },
+        { dataIndex: "appName", title: "App名称" },
         { dataIndex: "region", title: "服务区" },
         { dataIndex: "loginTime", title: "最后一次登录", scopedSlots: { customRender: "loginTime" } },
       ],

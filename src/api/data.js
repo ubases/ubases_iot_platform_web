@@ -93,6 +93,20 @@ export function getDeviceStatistics(params = {}) {
   });
 }
 
+
+/**
+ * 产品故障值列表
+ * @param {*} params 查询参数
+ * @returns
+ */
+export function getFaultValues(params = {}) {
+  return request({
+    url: "/v1/platform/web/data/pm/product/faultValues",
+    method: "get",
+    params,
+  });
+}
+
 /**
  * 设备故障-列表
  * @param {*} data 查询参数
@@ -107,7 +121,7 @@ export function getDeviceFaultList(data = {}) {
 }
 
 /**
- * APP数据-列表
+ * App数据-列表
  * @param {*} data 查询参数
  * @returns
  */
@@ -120,13 +134,39 @@ export function getAppList(data = {}) {
 }
 
 /**
- * APP数据-列表
+ * App数据-列表
  * @param {*} params 查询参数
  * @returns
  */
 export function getAppDetails(params = {}) {
   return request({
     url: "/v1/platform/web/data/pm/app/detail",
+    method: "get",
+    params,
+  });
+}
+
+/**
+ * 发送短信/邮件增加发送记录
+ * @param {*} data 查询参数
+ * @returns
+ */
+export function sendRecord(data = {}) {
+  return request({
+    url: "/v1/platform/web/data/noticeInfo/sendRecord",
+    method: "post",
+    data,
+  });
+}
+
+/**
+ * 获取开发者的故障类型物模型数据
+ * @param {*} params 查询参数
+ * @returns
+ */
+export function getFaultFuncList(params = {}) {
+  return request({
+    url: "/v1/platform/web/open/product/faultFuncList",
     method: "get",
     params,
   });

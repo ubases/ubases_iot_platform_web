@@ -1,56 +1,60 @@
 <template>
   <div>
-    <a-button type="dashed" class="aithings-upload-img">
-      <input
-        v-show="false"
-        ref="file"
-        type="file"
-        :disabled="disabled"
-        :accept="accept"
-        @click="
-          (e) => {
-            e.target.value = '';
-          }
-        "
-        @change="getFileData"
-      />
-      <!-- 启用上传 -->
-      <template v-if="!disabled">
-        <!-- 上传前 -->
-        <div
-          class="upload-add"
-          v-if="!loading && !imgSrc"
-          @click="onChangeFile"
-        >
-          <a-icon class="add-icon" type="plus" />
-          <div class="add">上传图片</div>
-        </div>
-        <!-- 上传中 -->
-        <div class="upload-loading" v-if="loading">
-          <a-spin />
-        </div>
-        <!-- 上传后 -->
-        <div class="upload-edit" v-if="!loading && imgSrc">
-          <img
-            style="object-fit: contain"
-            :src="imgSrc"
-            @click="handlePreview"
-          />
-          <div class="edit" @click="onChangeFile">上传</div>
-        </div>
-      </template>
-      <!-- 禁用上传 -->
-      <template v-else>
-        <div class="upload-details">
-          <img
-            style="object-fit: contain"
-            v-if="imgSrc"
-            :src="imgSrc"
-            @click="handlePreview"
-          />
-        </div>
-      </template>
-    </a-button>
+    <div class="upload-wrap">
+      <a-button type="dashed" class="aithings-upload-img">
+        <input
+          v-show="false"
+          ref="file"
+          type="file"
+          :disabled="disabled"
+          :accept="accept"
+          @click="
+            (e) => {
+              e.target.value = '';
+            }
+          "
+          @change="getFileData"
+        />
+        <!-- 启用上传 -->
+        <template v-if="!disabled">
+          <!-- 上传前 -->
+          <div
+            class="upload-add"
+            v-if="!loading && !imgSrc"
+            @click="onChangeFile"
+          >
+            <a-icon class="add-icon" type="plus" />
+            <div class="add">上传图片</div>
+          </div>
+          <!-- 上传中 -->
+          <div class="upload-loading" v-if="loading">
+            <a-spin />
+          </div>
+          <!-- 上传后 -->
+          <div class="upload-edit" v-if="!loading && imgSrc">
+            <img
+              style="object-fit: contain"
+              :src="imgSrc"
+              @click="handlePreview"
+            />
+            <div class="edit" @click="onChangeFile">上传</div>
+          </div>
+        </template>
+        <!-- 禁用上传 -->
+        <template v-else>
+          <div class="upload-details">
+            <img
+              style="object-fit: contain"
+              v-if="imgSrc"
+              :src="imgSrc"
+              @click="handlePreview"
+            />
+          </div>
+        </template>
+      </a-button>
+      <div class="link-a download" v-if="download" @click="onChangeDownload">下载</div>
+    </div>
+    
     <div class="img-hint" v-if="imgHint">{{ imgHint }}</div>
   </div>
 </template>
@@ -64,6 +68,11 @@ export default {
       default: () => {
         return [".jpg", ".png", ".bmp", ".jpeg"];
       },
+    },
+     // 文件名
+     propsFileName: {
+      type: [String],
+      default: "",
     },
     // 文件地址
     propsImgSrc: {
@@ -115,6 +124,11 @@ export default {
       type: [String],
       default: "",
     },
+    // 是否下载
+    download: {
+      type: [Boolean],
+      default: false,
+    },
   },
   data() {
     return {
@@ -139,7 +153,6 @@ export default {
       this.$refs.file.dispatchEvent(new MouseEvent("click"));
     },
     async getFileData() {
-      console.log(11111111111111)
       const inputFile = this.$refs.file.files[0];
       if (await this.fileVerify(inputFile)) return; // 校验图片是否符合规则
       this.loading = true;
@@ -198,6 +211,16 @@ export default {
     handlePreview() {
       this.$PreviewModal({ url: this.imgSrc });
     },
+    onChangeDownload() {
+      if (this.propsImgSrc) {
+        this.$DownloadFile(
+          this.propsImgSrc,
+          this.propsFileName || "不知名文件"
+        );
+      } else {
+        this.$emit("download");
+      }
+    },
   },
 };
 </script>
@@ -255,6 +278,15 @@ export default {
       color: #fff;
       background-color: rgba(0, 0, 0, 0.6);
     }
+  }
+
+}
+.upload-wrap{
+  display: flex;
+  align-items: center;
+  .download{
+    padding-left: 20px;
+    text-decoration: underline;
   }
 }
 .img-hint {

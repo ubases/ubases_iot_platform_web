@@ -3,7 +3,6 @@
     <a-page-header :title="title" @back="$multiTab.closeCurrentPage()">
       <a-spin :spinning="confirmLoading">
         <a-form-model ref="ruleForm" :model="form" :rules="formDisabled ? {} : rules" :label-col="labelCol" :wrapper-col="wrapperCol">
-          <!-- 名称 -->
           <a-form-model-item label="面板名称(中文)" prop="name">
             <div v-if="formDisabled">{{ form.name }}</div>
             <a-input v-else v-model="form.name" placeholder="请输入面板名称(中文)" />
@@ -12,7 +11,10 @@
             <div v-if="formDisabled">{{ form.nameEn }}</div>
             <a-input v-else v-model="form.nameEn" placeholder="请输入面板名称(英文)" />
           </a-form-model-item>
-          <!-- 选择产品 -->
+          <a-form-model-item label="面板编码" prop="code">
+            <div v-if="formDisabled">{{ form.code }}</div>
+            <a-input v-else v-model="form.code" placeholder="请输入面板编码" />
+          </a-form-model-item>
           <a-form-model-item label="选择产品分类" prop="productTypeId">
             <div v-if="formDisabled">{{ form.productTypeName ? form.productTypeName : "无" }}</div>
             <!-- 详情或者产品类型已发布则不可编辑 -->
@@ -38,7 +40,7 @@
           <a-form-model-item label="选择产品类型">
             <div v-if="formDisabled">
               {{ form.productId ? form.productName : "无" }}
-              <span>
+              <span v-if="form.productId">
                 {{ $DictName("product_release", productStatus) }}
               </span>
             </div>
@@ -59,13 +61,24 @@
               :propsAccept="['.zip']"
               :propsFileName="form.urlName"
               :fileSize="2"
+              :propsFileSrc="form.url"
+              :download="form.url?true:false"
+              :propsImgSrc="form.url"
               @ok="onChangeZipFile"
             ></upload-file>
           </a-form-model-item>
           <!-- 预览图 -->
           <a-form-model-item label="预览图" prop="previewUrl">
             <input type="text" v-show="false" v-model="form.previewUrl" />
-            <upload-img :imgRequest="false" :propsImgSrc="form.previewUrl" :disabled="formDisabled" imgHint="建议3:4,png格式最佳,大小不超过1M" @ok="handleUploadImg"></upload-img>
+            <upload-img 
+            :imgRequest="false" 
+            :propsImgSrc="form.previewUrl" 
+            :disabled="formDisabled" 
+            :download="form.previewUrl?true:false"
+            propsFileName="控制面板预览图"
+            imgHint="建议3:4,png格式最佳,大小不超过1M" 
+            @ok="handleUploadImg"
+            ></upload-img>
           </a-form-model-item>
           <!-- 语言包 -->
           <a-form-model-item label="语言包" prop="langFileName">
@@ -80,7 +93,7 @@
               ]"
               :propsAccept="['.xls', '.xlsx', '.csv']"
               :disabled="formDisabled"
-              :download="formDisabled"
+              :download="form.id&&form.langFileName?true:false"
               :propsFileName="form.langFileName"
               :fileSize="2"
               @ok="onChangeExcelFile"
@@ -134,6 +147,11 @@ export default {
       rules: {
         name: ZhNameRules("请输入控制面板中文名称"),
         nameEn: EnNameRules("请输入控制面板英文名称"),
+        productTypeId: CommonRules("请选择产品分类"),
+        code:[
+          { required: true, message:'请输入面板编码'},
+          { required: true, pattern: /^[A-Za-z0-9_-]+$/, message: "限制英文、数字、中划线、下划线"}
+        ],
         urlName: CommonRules("请选择文件"),
         previewUrl: CommonRules("请选择预览图"),
         langFileName: CommonRules("请选择语言包"),
@@ -236,6 +254,8 @@ export default {
         }
         formData.append("name", this.form.name);
         formData.append("nameEn", this.form.nameEn);
+        formData.append("code", this.form.code);
+        formData.append("productTypeId", this.form.productTypeId);
         formData.append("desc", this.form.desc || "");
         this.confirmLoading = true;
         let res;
@@ -319,12 +339,16 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.file-upload {
-  display: flex;
-  align-items: center;
-  .file-name {
-    margin-right: 10px;
-    text-decoration: underline;
+// .file-upload {
+//   display: flex;
+//   align-items: center;
+  /deep/.file-name {
+    // margin-right: 10px;
+    // text-decoration: underline;
+    display: flex;
+    .name{
+      margin-right: 10px;
+    }
   }
   .preview-img {
     width: 100px;
@@ -332,5 +356,6 @@ export default {
     border: 1px solid #ccc;
     cursor: pointer;
   }
-}
+// }
+
 </style>

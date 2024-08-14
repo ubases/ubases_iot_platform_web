@@ -1,5 +1,5 @@
 <template>
-  <span class="text">V2.0.0</span>
+  <span class="text">V2.1.0</span>
 </template>
 <script>
 

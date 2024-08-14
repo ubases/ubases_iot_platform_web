@@ -153,7 +153,7 @@ export default {
       columns: [
         {
           title: "序号",
-          width: "64px",
+          width: "50px",
           customRender: (text, record, index) => index + 1,
         },
         {

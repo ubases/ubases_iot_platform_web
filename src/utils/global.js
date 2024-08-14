@@ -100,7 +100,6 @@ export default {
             resolve();
           })
           .catch((err) => {
-            console.log("download error", err);
             that.$message.error("服务器连接错误！");
             reject();
           });

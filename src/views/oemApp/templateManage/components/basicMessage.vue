@@ -142,7 +142,6 @@ export default {
 
     // 点击选择打开弹窗
     async handleSelect(){
-      // console.log(this.$DictList('app_template_open_range'))
       await this.queryByAccount()
       this.visible = true
     },
@@ -182,7 +181,6 @@ export default {
 
     // 重置校验
     resetValid(key){
-      console.log(key)
       this.$refs["ruleForm"].validateField(key)
     },
 

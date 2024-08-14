@@ -141,7 +141,6 @@ export default {
 
     // 图片上传成功
     handleUpload(data,index){
-      console.log(data,index)
       this.form.previewImages[index]=data.fullPath
       if(index == this.form.previewImages.length-1 && this.form.previewImages.length < 5){
         this.form.previewImages.push('')

@@ -44,6 +44,10 @@
         {{ item.updatedAt | momentFilter }}
       </template>
       <template slot="action" slot-scope="text, item">
+        <a-button type="link" size="small" @click="handleDownload(item)">
+          下载
+        </a-button>
+        <a-divider type="vertical" />
         <a-button type="link" size="small" icon="edit" @click="handleEdit(item.id)">
           修改
         </a-button>
@@ -76,13 +80,13 @@ export default {
       loading: false,
       dataSource: [],
       columns: [
-        { title: "序号", width: "80px", customRender: (text, record, index) => index + 1 },
+        { title: "序号", width: "50px", customRender: (text, record, index) => index + 1 },
         { dataIndex: "packageName", title: "语言包名称" },
         { dataIndex: "appTemplateType", title: "模板类型", scopedSlots: { customRender: "appTemplateType" } },
         { dataIndex: "appTemplateVersion", title: "模板版本号" },
         { dataIndex: "fileSize", title: "文件包大小" },
         { dataIndex: "updatedAt", title: "更新时间", scopedSlots: { customRender: "updatedAt" } },
-        { title: "操作", key: "action", align: "center", width: "180px", scopedSlots: { customRender: "action" } },
+        { title: "操作", key: "action", align: "center", width: "260px", scopedSlots: { customRender: "action" } },
       ],
       pagination: {
         showSizeChanger: true,
@@ -181,6 +185,18 @@ export default {
           this.queryList()
         },
       })
+    },
+    handleDownload(item) {
+        this.$DownloadTemplate(
+        this,
+        {
+          url: `/v1/platform/web/lang/appResources/download`,
+          method: "get",
+          belongType: item.belongType,
+          packageId: item.id,
+        },
+        item.fileName || "语言包.xlsx"
+      )
     },
   },
 };

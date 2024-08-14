@@ -11,7 +11,6 @@ const list = () => {
 const user = {username: '',password: ''}
 const login = (options) => {
   const params = getBody(options)
-  console.log('mock: params', params)
   if (user.username != params.username || user.password != params.password) {
     return builder(null, '账号密码错误', -1)
   }else{

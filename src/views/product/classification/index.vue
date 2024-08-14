@@ -133,7 +133,6 @@ export default {
             this.dataSource = res.data.list;
             this.childrenNull(this.dataSource);
             this.pagination.total = res.data.total;
-            console.log(this.dataSource)
           }
         })
         .finally(() => {

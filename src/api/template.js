@@ -132,7 +132,7 @@ export function getTestDetails(id) {
 }
 
 /**
- * APP协议列表
+ * App协议列表
  * @param {*} data 查询参数
  * @returns
  */
@@ -145,7 +145,7 @@ export function getAgreementList(data = {}) {
 }
 
 /**
- * APP协议-删除
+ * App协议-删除
  * @param {*} id 协议ID
  * @returns
  */
@@ -158,7 +158,7 @@ export function deleteAgreement(data = {}) {
 }
 
 /**
- * APP协议-修改状态
+ * App协议-修改状态
  * @param {*} id 协议ID
  * @returns
  */
@@ -171,7 +171,7 @@ export function setAgreementStatus(data = {}) {
 }
 
 /**
- * APP协议-添加
+ * App协议-添加
  * @param {*} data 添加参数
  * @returns
  */
@@ -184,7 +184,7 @@ export function addAgreement(data = {}) {
 }
 
 /**
- * APP协议-编辑
+ * App协议-编辑
  * @param {*} data 编辑参数
  * @returns
  */
@@ -197,7 +197,7 @@ export function editAgreement(data = {}) {
 }
 
 /**
- * APP协议-详情
+ * App协议-详情
  * @param {*} id 协议ID
  * @returns
  */

@@ -22,7 +22,8 @@
           </a-form-model-item>
           <!-- 详情不显示密码 -->
           <a-form-model-item v-if="!formDisabled" label="密码" prop="password">
-            <a-input :disabled="editDisabled" :type="editDisabled ? 'password' : 'text'" placeholder="建议英文,数字,符号的组合" v-model="form.password"/>
+            <a-input v-if="!editDisabled" placeholder="建议英文,数字,符号的组合" type="text" v-model="form.password" />
+            <a-input v-if="editDisabled" disabled type="password" value="xxxxxxxx" />
             <!-- 编辑状况下才可放开密码重置功能 -->
             <a-button v-if="editDisabled" @click="resetPassword">
               重置密码
@@ -87,7 +88,6 @@
 <script>
 import { getDeveloperDetails, addDeveloper, editDeveloper, setDeveloperStatus, resetDeveloperPassword} from "@/api/authority";
 import { PassWordRules, AccountRules, CommonRules, EMAIL_REG, PHONE_REG} from "@/utils/validate";
-import moment from "moment";
 export default {
   name: "DeveloperDetails",
   data() {
@@ -138,9 +138,8 @@ export default {
         this.title = "添加开发者账号";
         this.form = {
           status: 1,
-          contract: [],
           accountType:1,
-          accountOrigin: 2
+          accountOrigin: 2,
         };
         this.rules.password = PassWordRules()
       } else if (this.type === "edit") {
@@ -158,8 +157,8 @@ export default {
       this.formLoading = true;
       let res = await getDeveloperDetails({ id: this.id });
       if (res.code === 0) this.form = res.data;
-      this.form.password = "xxxxxxxx";
       this.form.contract = this.form.contract || [];
+      this.form.password = 'xxxxxxxx'
       this.formLoading = false;
     },
     editForm() {
@@ -178,7 +177,7 @@ export default {
         const md5 = require('md5')
         const password = md5(this.form.password)
         if (this.id) {
-          res = await editDeveloper({...this.form, password});
+          res = await editDeveloper({...this.form});
         } else {
           res = await addDeveloper({...this.form, password});
         }

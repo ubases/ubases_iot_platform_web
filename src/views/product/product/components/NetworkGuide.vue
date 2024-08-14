@@ -253,9 +253,7 @@ export default {
           }
         });
         this.visible = false;
-      } else {
-        console.log("不能提交");
-      }
+      } 
     },
     handleCancel() {
       this.visible = false;

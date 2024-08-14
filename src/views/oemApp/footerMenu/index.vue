@@ -35,7 +35,7 @@ export default {
     return {
       dataSource: [],
       columns: [
-        { title: "序号", width: "80px", customRender: (text, record, index) => index + 1 },
+        { title: "序号", width: "50px", customRender: (text, record, index) => index + 1 },
         { dataIndex: "name", title: "菜单名称", scopedSlots: { customRender: "name" } },
         { dataIndex: "defImage", title: "默认图标", scopedSlots: { customRender: "defImage" } },
         { dataIndex: "selImage", title: "选中图标", scopedSlots: { customRender: "selImage" } },

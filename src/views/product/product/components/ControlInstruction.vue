@@ -100,7 +100,6 @@ export default {
   computed: {
     // 有必选和非必选 需要做出判断
     disabledForm: function () {
-      console.log(this.instructRows,this.mustList)
       if (this.instructRows.length === 0) return true;
       return this.mustList.some(
         (value) => !this.instructRows.some((item) => item.id === value.id)

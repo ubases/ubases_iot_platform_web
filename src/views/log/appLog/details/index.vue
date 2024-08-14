@@ -7,7 +7,7 @@
             <a-descriptions-item label="账号">
               {{ logInfo.account }}
             </a-descriptions-item>
-            <a-descriptions-item label="APP名称">
+            <a-descriptions-item label="App名称">
               {{ logInfo.appName }}
             </a-descriptions-item>
             <a-descriptions-item label="服务区">
@@ -101,7 +101,7 @@ export default {
       confirmLoading: false,
       dataSourceRecord: [],
       columnsRecord: [
-        { title: "序号", width: "80px", customRender: (item, value, index) => index + 1 },
+        { title: "序号", width: "50px", customRender: (item, value, index) => index + 1 },
         { dataIndex: "createdAt", title: "时区(GMT+8)", scopedSlots: { customRender: "createdAt" } },
         { dataIndex: "eventName", title: "事件名称" },
         { dataIndex: "logType", title: "日志类型" },

@@ -82,7 +82,7 @@ export default {
       confirmLoading: false,
       dataSourceRecord: [{}],
       columnsRecord: [
-        { title: "序号", width: "80px", customRender: (item, value, index) => index + 1},
+        { title: "序号", width: "50px", customRender: (item, value, index) => index + 1},
         { dataIndex: "deviceName", title: "操作内容" },
         { dataIndex: "deviceName1", title: "操作人" },
         { dataIndex: "deviceName2", title: "角色" },

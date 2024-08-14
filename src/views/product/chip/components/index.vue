@@ -372,6 +372,7 @@ export default {
       this.$set(this.form, "defaultVersion", "");
     },
     linkToPage() {
+      this.visible = false;
       this.$routerPush({
         path: "/product/firmware/details/index?type=add",
         name: "FirmwareDetails",

@@ -61,7 +61,7 @@
                 fileDir="firmwareDoc"
                 fileIcon="folder"
                 fileHint="固件为bin格式,且不超过10M"
-                :fileType="['application/x-zip-compressed','application/octet-stream','application/zip','application/x-zip']"
+                :fileType="[]"
                 :propsAccept="['.bin']"
                 :propsFileName="form.fileName"
                 :propsFileSrc="''"

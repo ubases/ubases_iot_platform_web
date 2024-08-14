@@ -90,7 +90,7 @@ export default {
         queryObj: {},
       },
       columns: [
-        { title: "序号", width: "80px", customRender: (item, value, index) => index + 1},
+        { title: "序号", width: "50px", customRender: (item, value, index) => index + 1},
         { dataIndex: "deviceName", title: "设备名称", scopedSlots: { customRender: "deviceName" }},
         { dataIndex: "activeStatus", title: "设备ID", scopedSlots: { customRender: "activeStatus" }},
         { dataIndex: "onlineStatus", title: "产品类型", scopedSlots: { customRender: "onlineStatus" }},

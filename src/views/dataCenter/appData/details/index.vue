@@ -1,16 +1,16 @@
 <template>
   <a-card :bordered="false">
-    <a-page-header title="查看APP信息" @back="$multiTab.closeCurrentPage()">
+    <a-page-header title="查看App信息" @back="$multiTab.closeCurrentPage()">
       <a-spin :spinning="confirmLoading">
-        <a-card title="APP信息" :bordered="false">
+        <a-card title="App信息" :bordered="false">
           <a-descriptions>
-            <a-descriptions-item label="APP名称">
+            <a-descriptions-item label="App名称">
               {{ appInfo.appName }}
             </a-descriptions-item>
             <a-descriptions-item label="所属开发者">
               {{ appInfo.account }}
             </a-descriptions-item>
-            <a-descriptions-item label="APP类型">
+            <a-descriptions-item label="App类型">
               {{ appInfo.appType }}
             </a-descriptions-item>
           </a-descriptions>

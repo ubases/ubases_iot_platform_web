@@ -5,7 +5,7 @@
       <a-alert message="除了模板版本号，其他信息都会完整复制" banner/>
       <a-form-model ref="ruleForm" :model="form" :rules="rules">
         <a-form-model-item :label-col="labelCol" :wrapper-col="wrapperCol" label="模板版本号" prop="version">
-          <a-input v-model="form.version" placeholder="请选择模板版本号"/>
+          <a-input v-model="form.version" placeholder="请输入模板版本号"/>
           <span>版本号格式：xx.xx.xx</span>
         </a-form-model-item>
       </a-form-model>
@@ -30,7 +30,7 @@ export default {
       confirmLoading: false,
       form: {},
       rules: {
-        version: VersionRules("请选择模板版本号"),
+        version: VersionRules("请输入模板版本号"),
       },
       labelCol: { xs: { span: 24 }, sm: { span: 5 } },
       wrapperCol: { xs: { span: 24 }, sm: { span: 19 } },

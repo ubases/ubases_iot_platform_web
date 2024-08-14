@@ -123,7 +123,6 @@ export default {
     },
     // 重置校验
     resetValid(key){
-      console.log(key)
       this.$refs["ruleForm"].validateField(key)
     },
   },

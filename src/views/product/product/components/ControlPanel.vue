@@ -77,6 +77,9 @@
           <a-form-model-item label="面板名称(英文)" prop="nameEn">
             <a-input v-model="form.nameEn" />
           </a-form-model-item>
+          <a-form-model-item label="面板编码" prop="code">
+            <a-input v-model="form.code" placeholder="请输入面板编码" />
+          </a-form-model-item>
           <!-- 选择产品 -->
           <a-form-model-item label="选择产品分类" prop="productTypeId">
             <!-- 详情或者产品类型已发布则不可编辑 -->
@@ -221,6 +224,10 @@ export default {
       rules: {
         name: ZhNameRules("请输入控制面板中文名称"),
         nameEn: EnNameRules("请输入控制面板英文名称"),
+        code:[
+          { required: true, message:'请输入面板编码'},
+          { required: true, pattern: /^[A-Za-z0-9_-]+$/, message: "限制英文、数字、中划线、下划线"}
+        ],
         productTypeId: CommonRules("请选择产品分类"),
         urlName: CommonRules("请选择文件"),
         previewUrl: CommonRules("请选择预览图"),
@@ -324,6 +331,7 @@ export default {
         productId: this.formData.id || "",
         name: "",
         nameEn: "",
+        code:"",
         desc: "",
         previewUrl: "",
         urlName: "",
@@ -356,6 +364,7 @@ export default {
         }
         formData.append("name", this.form.name);
         formData.append("nameEn", this.form.nameEn);
+        formData.append("code", this.form.code);
         formData.append("productTypeId", this.form.productTypeId);
         formData.append("status", this.form.status);
         formData.append("desc", this.form.desc || "");

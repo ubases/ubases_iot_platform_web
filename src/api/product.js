@@ -555,3 +555,16 @@ export function resetProductThingModels(params) {
     params
   });
 }
+
+/**
+ * 平台获取开发者产品列表数据
+ * @param {*} data 编辑参数
+ * @returns
+ */
+export function getPlatformProductList(data) {
+  return request({
+    url: "/v1/platform/web/open/product/platformList",
+    method: "post",
+    data,
+  });
+}
